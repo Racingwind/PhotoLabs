@@ -59,7 +59,7 @@ const sampleDataForPhotoList = [
 
 const PhotoList = () => {
   
-  const photoArr = sampleDataForPhotoList.map((entry, index) => <PhotoListItem key={index} {...entry} />);
+  const photoArr = sampleDataForPhotoList.map((entry) => <PhotoListItem key={entry.id} {...entry} />);
 
   return (
     <ul className="photo-list">
