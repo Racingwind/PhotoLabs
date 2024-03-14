@@ -1,4 +1,5 @@
 import React from "react";
+import PhotoFavButton from "./PhotoFavButton";
 
 import "../styles/PhotoListItem.scss";
 
@@ -8,13 +9,14 @@ import "../styles/PhotoListItem.scss";
 const PhotoListItem = (props) => {
   return (
     <div className="photo-list__item">
-      <img className="photo-list__image" src={props.photoData.imageSource} />
+      <PhotoFavButton />
+      <img className="photo-list__image" src={props.imageSource} />
       <div className="photo-list__user-details">
-        <img className="photo-list__user-profile" src={props.photoData.profile} />
+        <img className="photo-list__user-profile" src={props.profile} />
         <div className="photo-list__user-info">
-          {props.photoData.username}
+          {props.username}
           <div className="photo-list__user-location">
-            {props.photoData.location.city}, {props.photoData.location.country}
+            {props.location.city}, {props.location.country}
           </div>          
         </div>
       </div>
