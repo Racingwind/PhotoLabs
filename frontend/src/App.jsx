@@ -15,12 +15,12 @@ const sampleDataForPhotoListItem  = {
   profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
 };
 
-const photoArr = [];
-for (let i = 0; i < 3; i++) {
-  photoArr.push(<PhotoListItem key={i} photoData={sampleDataForPhotoListItem}/>);
-}
-
 const App = () => {
+
+  const photoArr = [];
+  for (let i = 0; i < 3; i++) {
+    photoArr.push(<PhotoListItem key={i} photoData={sampleDataForPhotoListItem}/>);
+  }
 
   return (
     <div className="App">
