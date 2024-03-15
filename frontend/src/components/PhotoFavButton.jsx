@@ -5,12 +5,12 @@ import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton(props) {
 
-  const handleClick = (selected) => {
-    selected ? delete props.favourites[props.id] : props.favourites[props.id] = 1;
+  const handleClick = (id) => {
+    props.favouritesTracker(id);
   }
 
   return (
-    <div onClick={() => handleClick(props.favourites[props.id])} className="photo-list__fav-icon">
+    <div onClick={() => handleClick(props.id)} className="photo-list__fav-icon">
       <div className="photo-list__fav-icon-svg">
         <FavIcon selected={props.favourites[props.id]} />
       </div>
