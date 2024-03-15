@@ -6,14 +6,14 @@ import '../styles/HomeRoute.scss';
 
 const HomeRoute = (props) => {
 
-  const [favCount, dispatch] = useReducer((favCount, selected) => {
-    return selected ? favCount + 1 : favCount - 1;
-  }, 0);
+  const [favourites, dispatch] = useReducer((favourites, selected) => {
+    return selected ? delete favourites[id] : favourites[id] = 1;
+  }, {});
 
   return (
     <div className="home-route">
-      <TopNavigationBar topics={props.topics} favCount={favCount} />
-      <PhotoList photos={props.photos} favTracker={dispatch} />
+      <TopNavigationBar topics={props.topics} favs={favourites} />
+      <PhotoList photos={props.photos} favouritesTracker={dispatch} favourites={favourites} />
     </div>
   );
 };

@@ -7,16 +7,19 @@ import "../styles/PhotoListItem.scss";
 
 // image at the top, then profile picture, then user name, then city, country
 const PhotoListItem = (props) => {
+
+  const { photo, favouritesTracker } = props;
+
   return (
     <div className="photo-list__item">
-      <PhotoFavButton favTracker={props.favTracker} />
-      <img className="photo-list__image" src={props.photo.urls.regular} />
+      <PhotoFavButton favouritesTracker={favouritesTracker} favourites={props.favourites} id={photo.id}/>
+      <img className="photo-list__image" src={photo.urls.regular} />
       <div className="photo-list__user-details">
-        <img className="photo-list__user-profile" src={props.photo.user.profile} />
+        <img className="photo-list__user-profile" src={photo.user.profile} />
         <div className="photo-list__user-info">
-          {props.photo.user.name}
+          {photo.user.name}
           <div className="photo-list__user-location">
-            {props.photo.location.city}, {props.photo.location.country}
+            {photo.location.city}, {photo.location.country}
           </div>          
         </div>
       </div>
