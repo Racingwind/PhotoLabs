@@ -5,7 +5,7 @@ import "../styles/TopicListItem.scss";
 const TopicListItem = (props) => {
   return (
     <div className="topic-list__item">
-      <span>{props.label}</span>
+      <span>{props.topic.title}</span>
     </div>
   );
 };
