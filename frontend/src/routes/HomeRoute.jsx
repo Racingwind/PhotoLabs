@@ -6,6 +6,8 @@ import '../styles/HomeRoute.scss';
 
 const HomeRoute = (props) => {
 
+  const {topics, photos, openModal} = props;
+
   const [favourites, setFavourites] = useState({});
 
   const favouritesTracker = (id) => {
@@ -23,8 +25,8 @@ const HomeRoute = (props) => {
 
   return (
     <div className="home-route">
-      <TopNavigationBar topics={props.topics} favourites={favourites} />
-      <PhotoList photos={props.photos} favouritesTracker={favouritesTracker} favourites={favourites} openModal={props.openModal} />
+      <TopNavigationBar topics={topics} favourites={favourites} />
+      <PhotoList photos={photos} favouritesTracker={favouritesTracker} favourites={favourites} openModal={openModal} />
     </div>
   );
 };

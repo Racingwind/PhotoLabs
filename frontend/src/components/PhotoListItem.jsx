@@ -6,9 +6,7 @@ import "../styles/PhotoListItem.scss";
 
 
 // image at the top, then profile picture, then user name, then city, country
-const PhotoListItem = (props) => {
-
-  const { photo, favourites, favouritesTracker, openModal } = props;
+const PhotoListItem = ({ photo, favourites, favouritesTracker, openModal }) => {
 
   const handleClick = () => {
     openModal(photo);

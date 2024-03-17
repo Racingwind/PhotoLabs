@@ -3,15 +3,15 @@ import PhotoListItem from "./PhotoListItem";
 
 import "../styles/PhotoList.scss";
 
-const PhotoList = (props) => {
+const PhotoList = ({photos, favourites, favouritesTracker, openModal}) => {
 
-  const photoArr = props.photos.map((entry) => {
+  const photoArr = photos.map((entry) => {
     return <PhotoListItem 
             key={entry.id}
             photo={entry}
-            favouritesTracker={props.favouritesTracker}
-            favourites={props.favourites}
-            openModal={props.openModal}
+            favouritesTracker={favouritesTracker}
+            favourites={favourites}
+            openModal={openModal}
           />
   });
 

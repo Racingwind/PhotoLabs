@@ -3,9 +3,9 @@ import React from 'react';
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 
-const PhotoDetailsModal = (props) => {
+const PhotoDetailsModal = ({ closeModal }) => {
 
-  const handleClick = () => props.closeModal();
+  const handleClick = () => closeModal();
 
   return (
     <div className="photo-details-modal">
