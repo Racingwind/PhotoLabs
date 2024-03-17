@@ -14,7 +14,11 @@ const App = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   
-  const openModal = (photo) => setIsModalOpen(true);
+  const openModal = (photo) => {
+    setIsModalOpen(true);
+    console.log(photo);
+  };
+
   const closeModal = () => setIsModalOpen(false);
 
 
