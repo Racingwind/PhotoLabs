@@ -8,12 +8,16 @@ import "../styles/PhotoListItem.scss";
 // image at the top, then profile picture, then user name, then city, country
 const PhotoListItem = (props) => {
 
-  const { photo, favouritesTracker } = props;
+  const { photo, favouritesTracker, openModal } = props;
+
+  const handleClick = () => {
+    openModal(photo);
+  };
 
   return (
     <div className="photo-list__item">
       <PhotoFavButton favouritesTracker={favouritesTracker} favourites={props.favourites} id={photo.id}/>
-      <img className="photo-list__image" src={photo.urls.regular} />
+      <img className="photo-list__image" onClick={handleClick} src={photo.urls.regular} />
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={photo.user.profile} />
         <div className="photo-list__user-info">

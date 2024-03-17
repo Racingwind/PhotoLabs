@@ -22,7 +22,7 @@ const HomeRoute = (props) => {
   return (
     <div className="home-route">
       <TopNavigationBar topics={props.topics} favourites={favourites} />
-      <PhotoList photos={props.photos} favouritesTracker={favouritesTracker} favourites={favourites} />
+      <PhotoList photos={props.photos} favouritesTracker={favouritesTracker} favourites={favourites} openModal={props.openModal} />
     </div>
   );
 };

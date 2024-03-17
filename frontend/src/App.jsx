@@ -1,5 +1,6 @@
-import React from 'react';
+import { React, useState } from 'react';
 import HomeRoute from 'routes/HomeRoute';
+import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
 import './App.scss';
 
@@ -11,9 +12,18 @@ import topics from 'mocks/topics';
 
 const App = () => {
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPhoto, setSelectedPhoto] = useState();
+
+  const openModal = (photo) => {
+    setSelectedPhoto(photo);
+    setIsModalOpen(true);
+  }
+
   return (
     <div className="App">
-      <HomeRoute topics={topics} photos={photos}/>
+      <HomeRoute topics={topics} photos={photos} openModal={openModal} />
+      {isModalOpen && <PhotoDetailsModal photo={selectedPhoto} />}
     </div>
   );
 };
