@@ -13,10 +13,11 @@ import topics from 'mocks/topics';
 const App = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPhoto, setSelectedPhoto] = useState();
   
   const openModal = (photo) => {
+    setSelectedPhoto(photo);
     setIsModalOpen(true);
-    console.log(photo);
   };
 
   const closeModal = () => setIsModalOpen(false);
@@ -26,7 +27,7 @@ const App = () => {
   return (
     <div className="App">
       <HomeRoute topics={topics} photos={photos} openModal={openModal} />
-      {isModalOpen && <PhotoDetailsModal closeModal={closeModal} />}
+      {isModalOpen && <PhotoDetailsModal selectedPhoto={selectedPhoto} closeModal={closeModal} />}
     </div>
   );
 };
