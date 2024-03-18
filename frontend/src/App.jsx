@@ -1,6 +1,7 @@
 import { React, useState } from 'react';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
+import useApplicationData from 'hooks/useApplicationData';
 
 import './App.scss';
 
@@ -12,41 +13,26 @@ import topics from 'mocks/topics';
 
 const App = () => {
 
-  const [favourites, setFavourites] = useState({});
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedPhoto, setSelectedPhoto] = useState();
-  
-  const favouritesTracker = (id) => {
-    setFavourites((prevFavourites) => {
-      if (prevFavourites[id]) {
-        // if id exists in the favorites object, use object destructuring and spread operator to remove the entry
-        const { [id]: _, ...newFavourites } = prevFavourites;
-        return newFavourites;
-      } else {
-        // otherwise se spread operator to add the entry
-        return { ...prevFavourites, [id]: 1 };
-      }
-    });
-  };
-
-  const openModal = (photo) => {
-    setSelectedPhoto(photo);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => setIsModalOpen(false);
-
+  const { state, favouritesTracker, openModal, closeModal } = useApplicationData();
 
   return (
     <div className="App">
-      <HomeRoute topics={topics} photos={photos} openModal={openModal} favourites={favourites} favouritesTracker={favouritesTracker} />
-      {isModalOpen && <PhotoDetailsModal 
-                        photo={selectedPhoto}
-                        openModal={openModal}
-                        closeModal={closeModal}
-                        favourites={favourites}
-                        favouritesTracker={favouritesTracker}
-      />}
+      <HomeRoute
+        topics={topics}
+        photos={photos}
+        openModal={openModal}
+        favourites={state.favourites}
+        favouritesTracker={favouritesTracker}
+      />
+      {state.isModalOpen && 
+        <PhotoDetailsModal 
+          photo={state.selectedPhoto}
+          openModal={openModal}
+          closeModal={closeModal}
+          favourites={state.favourites}
+          favouritesTracker={favouritesTracker}
+        />
+      }
     </div>
   );
 };
