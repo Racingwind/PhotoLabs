@@ -1,35 +1,41 @@
-import { React, useState } from 'react';
+import { React, useReducer } from 'react';
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'favouritesTracker':    
+      if (state.favourites[action.payload]) {
+        // if id exists in the favorites object, use object destructuring and spread operator to remove the entry
+        const { [action.payload]: removedFromFavourites, ...newFavourites } = state.favourites;
+        return { ...state, favourites: newFavourites };
+      } else {
+        // otherwise use spread operator to add the entry
+        return { ...state, favourites: { ...state.favourites, [action.payload]: 1 } };
+      }
+      case 'openModal':
+        return { ...state, selectedPhoto: action.payload, isModalOpen: true };
+      case 'closeModal':
+        return { ...state, isModalOpen: false };
+  }
+};
 
 const useApplicationData = () => {
   // State object containing the entire state of the application
-  const [state, setState] = useState({
+  const [state, dispatch] = useReducer(reducer, {
     favourites: {},
     isModalOpen: false,
     selectedPhoto: null,
   });
 
-  // Action to update favourites
   const favouritesTracker = (id) => {
-    setState((prevState) => {
-      if (prevState.favourites[id]) {
-        // if id exists in the favorites object, use object destructuring and spread operator to remove the entry
-        const { [id]: _, ...newFavourites } = prevState.favourites;
-        return { ...prevState, favourites: newFavourites };
-      } else {
-        // otherwise use spread operator to add the entry
-        return { ...prevState, favourites: { ...prevState.favourites, [id]: 1 } };
-      }
-    });
+    dispatch({ type: 'favouritesTracker', payload: id});
   };
 
-  // Action to set selected photo and open modal
   const openModal = (photo) => {
-    setState({ ...state, selectedPhoto: photo, isModalOpen: true });
+    dispatch({ type: 'openModal', payload: photo});
   };
 
-  // Action to close modal
   const closeModal = () => {
-    setState({ ...state, isModalOpen: false });
+    dispatch({ type: 'closeModal'});
   };
 
   // "Expose" the state and actions
