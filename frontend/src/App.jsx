@@ -5,10 +5,6 @@ import useApplicationData from 'hooks/useApplicationData';
 
 import './App.scss';
 
-import photos from 'mocks/photos';
-import topics from 'mocks/topics';
-
-
 // Note: Rendering a single component to build components in isolation
 
 const App = () => {
@@ -18,8 +14,8 @@ const App = () => {
   return (
     <div className="App">
       <HomeRoute
-        topics={topics}
-        photos={photos}
+        topics={state.topicData}
+        photos={state.photoData}
         openModal={openModal}
         favourites={state.favourites}
         favouritesTracker={favouritesTracker}
