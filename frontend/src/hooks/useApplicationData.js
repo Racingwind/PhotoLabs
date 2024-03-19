@@ -35,12 +35,14 @@ const useApplicationData = () => {
   });
 
   useEffect(() => {
-    fetch('/api/photos')
-      .then((res) => res.json())
-      .then((data) => dispatch({ type: 'setPhotoData', payload: data}));
-    fetch('/api/topics')
-    .then((res) => res.json())
-    .then((data) => dispatch({ type: 'setTopicData', payload: data}));
+    Promise.all([
+      fetch('/api/photos').then((res) => res.json()),
+      fetch('/api/topics').then((res) => res.json())
+    ])
+    .then(([photoData, topicData]) => {
+      dispatch({ type: 'setPhotoData', payload: photoData});
+      dispatch({ type: 'setTopicData', payload: topicData});
+    });
   }, []);
 
   const favouritesTracker = (id) => {
