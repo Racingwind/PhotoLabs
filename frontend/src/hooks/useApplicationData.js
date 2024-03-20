@@ -45,6 +45,16 @@ const useApplicationData = () => {
     });
   }, []);
 
+  const getPhotosByTopics = (topic_id) => {
+    let url = '/api/photos';
+    if (topic_id) {
+      url = `/api/topics/photos/${topic_id}`;
+    }
+    fetch(url)
+      .then((res) => res.json())
+      .then((photoData) => dispatch({ type: 'setPhotoData', payload: photoData}));
+  };
+
   const favouritesTracker = (id) => {
     dispatch({ type: 'favouritesTracker', payload: id});
   };
@@ -63,6 +73,7 @@ const useApplicationData = () => {
     favouritesTracker,
     openModal,
     closeModal,
+    getPhotosByTopics,
   };
 };
 

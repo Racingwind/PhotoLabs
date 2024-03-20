@@ -9,7 +9,7 @@ import './App.scss';
 
 const App = () => {
 
-  const { state, favouritesTracker, openModal, closeModal } = useApplicationData();
+  const { state, favouritesTracker, openModal, closeModal, getPhotosByTopics } = useApplicationData();
 
   return (
     <div className="App">
@@ -19,6 +19,7 @@ const App = () => {
         openModal={openModal}
         favourites={state.favourites}
         favouritesTracker={favouritesTracker}
+        getPhotosByTopics={getPhotosByTopics}
       />
       {state.isModalOpen && 
         <PhotoDetailsModal 
