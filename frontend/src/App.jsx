@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import React from 'react';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from 'hooks/useApplicationData';
@@ -20,6 +20,7 @@ const App = () => {
         favourites={state.favourites}
         favouritesTracker={favouritesTracker}
         getPhotosByTopics={getPhotosByTopics}
+        isModalOpen={state.isModalOpen}
       />
       {state.isModalOpen && 
         <PhotoDetailsModal 
@@ -28,6 +29,7 @@ const App = () => {
           closeModal={closeModal}
           favourites={state.favourites}
           favouritesTracker={favouritesTracker}
+          isModalOpen={state.isModalOpen}
         />
       }
     </div>

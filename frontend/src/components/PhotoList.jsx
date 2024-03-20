@@ -3,7 +3,7 @@ import PhotoListItem from "./PhotoListItem";
 
 import "../styles/PhotoList.scss";
 
-const PhotoList = ({photos, favourites, favouritesTracker, openModal}) => {
+const PhotoList = ({ photos, favourites, favouritesTracker, openModal, isModalOpen }) => {
 
   const photoArr = photos.map((entry) => {
     return <PhotoListItem 
@@ -12,6 +12,7 @@ const PhotoList = ({photos, favourites, favouritesTracker, openModal}) => {
             favouritesTracker={favouritesTracker}
             favourites={favourites}
             openModal={openModal}
+            isModalOpen={isModalOpen}
           />
   });
 

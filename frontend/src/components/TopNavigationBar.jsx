@@ -6,9 +6,8 @@ import '../styles/TopNavigationBar.scss'
 
 const TopNavigation = ({topics, favourites, getPhotosByTopics}) => {
   
-  const handleClick = () => {
-    getPhotosByTopics();
-  };
+  // Pass empty to get all categories
+  const handleClick = () => getPhotosByTopics("");
 
   const isEmpty = (object) => Object.keys(object).length !== 0 ? true : false;
 

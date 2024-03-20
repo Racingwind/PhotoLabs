@@ -6,11 +6,13 @@ import "../styles/PhotoListItem.scss";
 
 
 // image at the top, then profile picture, then user name, then city, country
-const PhotoListItem = ({ photo, favourites, favouritesTracker, openModal }) => {
+const PhotoListItem = ({ photo, favourites, favouritesTracker, openModal, isModalOpen }) => {
 
   const handleClick = () => {
-    openModal(photo);
-  };
+    if (!isModalOpen) {
+      openModal(photo);
+    }
+  }
 
   return (
     <div className="photo-list__item">

@@ -47,6 +47,7 @@ const useApplicationData = () => {
 
   const getPhotosByTopics = (topic_id) => {
     let url = '/api/photos';
+    // modify url is a topic id was passed in
     if (topic_id) {
       url = `/api/topics/photos/${topic_id}`;
     }
