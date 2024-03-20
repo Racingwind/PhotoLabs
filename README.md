@@ -12,8 +12,10 @@ A favourites system that tracks which photos users have added to their favorites
 Users are also able to click on each photo to bring up a modal containing a full resolution of the photo along with other similar photos
 
 ## Screenshots
+The photo list page
 !["The photo list page"](https://github.com/Racingwind/PhotoLabs/blob/main/docs/HomePage.PNG?raw=true)
 
+One of the photo card open in a modal
 !["One of the photo card open in a modal"](https://github.com/Racingwind/PhotoLabs/blob/main/docs/Modal.PNG?raw=true)
 
 ## Setup
